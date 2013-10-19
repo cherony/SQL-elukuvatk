@@ -163,9 +163,15 @@
 	</ul>
     <!-- Vuokraus -->
 	<div id="tabs-1">
-<table border="1" width="684" height="200">
+<h2 align="center">Vuokraustiedot</h2>
+<table border="1" width="100%">
 <tr>
-<td><!--Tästä alkaa PHP-osuus -->
+  <td><b>Tilausnumero</b></td>
+  <td><b>Tuotetunnus</b></td>
+  <td><b>Asiakastunnus</b></td>
+  <td><b>Päivämäärä</b></td>
+</tr>
+<!--Tästä alkaa PHP-osuus -->
 <?php
 // Yritetään ottaa yhteys MySQL-palvelimeen
 $yhteysNro = mysql_connect();
@@ -173,10 +179,10 @@ $yhteysNro = mysql_connect();
 if ($yhteysNro)             // Tai: if ($yhteysNro > 0)
 {
   // Yritetään avata tietokanta
-  if (mysql_selectdb('puhelimet'))
+  if (mysql_selectdb('elokuvatietokanta'))
   {
-    // Yritetään tehdä kysely puhelimet-tauluun
-    $tulosrivit = mysql_query ('SELECT * FROM puhelin ORDER By nimi')
+    // Yritetään tehdä kysely elokuvatietokanta-tauluun
+    $tulosrivit = mysql_query ('SELECT * FROM elokuvatietokanta ORDER By nimi')
       or die ('Kyselyvirhe!'); 
     // Tulostetaan jokaisesta tietokantataulun rivistä yksi rivi 
     // sivun taulukkoon:
@@ -184,13 +190,16 @@ if ($yhteysNro)             // Tai: if ($yhteysNro > 0)
     {
       print('<tr>');
       print('  <td>');
-      print $rivi["puhelinnumero"];
+      print $rivi["tilausnumero"];
       print('</td>');
       print('  <td>');
-      print $rivi["nimi"];
+      print $rivi["tuotetunnus"];
       print('</td>');
       print('  <td>');
-      print $rivi["osoite"];
+      print $rivi["asiakasnumero"];
+      print('</td>');
+	  print('  <td>');
+      print $rivi["tilauspvm"];
       print('</td>');
       print('</tr>');
       print ("\n");            // \n vaihtaa riviä lähdekoodissa
@@ -204,7 +213,6 @@ else
   echo "Tietokantaan kytkeytyminen epäonnistui!";
 ?>
 <!--Tähän päättyy PHP-osuus" -->
-</td>
 </table>
 <br>
 <fieldset>
