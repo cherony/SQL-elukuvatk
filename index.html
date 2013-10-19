@@ -2,7 +2,7 @@
 <html lang="us">
 <head>
 	<meta charset="utf-8">
-	<title>jQuery UI Example Page</title>
+	<title>Elokuvatietokanta</title>
 	<link href="css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
 	<script src="js/jquery-1.9.1.js"></script>
 	<script src="js/jquery-ui-1.10.3.custom.js"></script>
@@ -165,7 +165,46 @@
 	<div id="tabs-1">
 <table border="1" width="684" height="200">
 <tr>
-<td>tämänhetkiset vuokraukset näkyy tässä</td>
+<td><!--Tästä alkaa PHP-osuus -->
+<?php
+// Yritetään ottaa yhteys MySQL-palvelimeen
+$yhteysNro = mysql_connect();
+// Onnistuikohan? Numero on nolla, ellei onnistunut!
+if ($yhteysNro)             // Tai: if ($yhteysNro > 0)
+{
+  // Yritetään avata tietokanta
+  if (mysql_selectdb('puhelimet'))
+  {
+    // Yritetään tehdä kysely puhelimet-tauluun
+    $tulosrivit = mysql_query ('SELECT * FROM puhelin ORDER By nimi')
+      or die ('Kyselyvirhe!'); 
+    // Tulostetaan jokaisesta tietokantataulun rivistä yksi rivi 
+    // sivun taulukkoon:
+    while($rivi = mysql_fetch_array($tulosrivit)) 
+    {
+      print('<tr>');
+      print('  <td>');
+      print $rivi["puhelinnumero"];
+      print('</td>');
+      print('  <td>');
+      print $rivi["nimi"];
+      print('</td>');
+      print('  <td>');
+      print $rivi["osoite"];
+      print('</td>');
+      print('</tr>');
+      print ("\n");            // \n vaihtaa riviä lähdekoodissa
+    }
+    mysql_free_result($tulosrivit);
+  }
+  else
+    echo "Tietokanta puhelimet ei avautunut!";
+}
+else
+  echo "Tietokantaan kytkeytyminen epäonnistui!";
+?>
+<!--Tähän päättyy PHP-osuus" -->
+</td>
 </table>
 <br>
 <fieldset>
