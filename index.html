@@ -1,156 +1,303 @@
 <!doctype html>
-<html lang="en">
+<html lang="us">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Welcome to OpenShift</title>
-  <style>
-  html { 
-  background: black; 
-  }
-  body {
-    background: #333;
-    background: -webkit-linear-gradient(top, black, #666);
-    background: -o-linear-gradient(top, black, #666);
-    background: -moz-linear-gradient(top, black, #666);
-    background: linear-gradient(top, black, #666);
-    color: white;
-    font-family: "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
-    width: 40em;
-    margin: 0 auto;
-    padding: 3em;
-  }
-  a {
-    color: white;
-  }
+	<meta charset="utf-8">
+	<title>jQuery UI Example Page</title>
+	<link href="css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery-ui-1.10.3.custom.js"></script>
+	<script>
+	$(function() {
+		
+		$( "#accordion" ).accordion();
+		
 
-  h1 {
-    text-transform: capitalize;
-    -moz-text-shadow: -1px -1px 0 black;
-    -webkit-text-shadow: 2px 2px 2px black;
-    text-shadow: -1px -1px 0 black;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
-    background: #CC0000;
-    width: 22.5em;
-    margin: 1em -2em;
-    padding: .3em 0 .3em 1.5em;
-    position: relative;
-  }
-  h1:before {
-    content: '';
-    width: 0;
-    height: 0;
-    border: .5em solid #91010B;
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    position: absolute;
-    bottom: -1em;
-    left: 0;
-    z-index: -1000;
-  }
-  h1:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border: .5em solid #91010B;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    position: absolute;
-    bottom: -1em;
-    right: 0;
-    z-index: -1000;
-  }
-  h2 { 
-    margin: 2em 0 .5em;
-    border-bottom: 1px solid #999;
-  }
+		
+		var availableTags = [
+			"ActionScript",
+			"AppleScript",
+			"Asp",
+			"BASIC",
+			"C",
+			"C++",
+			"Clojure",
+			"COBOL",
+			"ColdFusion",
+			"Erlang",
+			"Fortran",
+			"Groovy",
+			"Haskell",
+			"Java",
+			"JavaScript",
+			"Lisp",
+			"Perl",
+			"PHP",
+			"Python",
+			"Ruby",
+			"Scala",
+			"Scheme"
+		];
+		$( "#autocomplete" ).autocomplete({
+			source: availableTags
+		});
+		
 
-  pre {
-    background: black;
-    padding: 1em 0 0;
-    -webkit-border-radius: 1em;
-    -moz-border-radius: 1em;
-    border-radius: 1em;
-    color: #9cf;
-  }
+		
+		$( "#button" ).button();
+		$( "#radioset" ).buttonset();
+		
 
-  ul { 
-    margin: 0; 
-    padding: 0;
-  }
-  li {
-    list-style-type: none;
-    padding: .5em 0;
-  }
+		
+		$( "#tabs" ).tabs();
+		
 
-  .brand {
-    display: block;
-    text-decoration: none;
-  }
-  .brand .brand-image {
-    float: left;
-    border: none;
-  }
-  .brand .brand-text {
-    float: left;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 4px 0;
-    color: white;
-    text-transform: uppercase;
-  }
-  .brand:hover,
-  .brand:active {
-    text-decoration: underline;
-  }
+		
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			width: 400,
+			buttons: [
+				{
+					text: "Ok",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				},
+				{
+					text: "Cancel",
+					click: function() {
+						$( this ).dialog( "close" );
+					}
+				}
+			]
+		});
 
-  .brand:before,
-  .brand:after {
-    content: ' ';
-    display: table;
-  }
-  .brand:after {
-    clear: both;
-  }
-  </style>
+		// Link to open the dialog
+		$( "#dialog-link" ).click(function( event ) {
+			$( "#dialog" ).dialog( "open" );
+			event.preventDefault();
+		});
+		
+
+		
+		$( "#datepicker" ).datepicker({
+			inline: true
+		});
+		
+
+		
+		$( "#slider" ).slider({
+			range: true,
+			values: [ 17, 67 ]
+		});
+		
+
+		
+		$( "#progressbar" ).progressbar({
+			value: 20
+		});
+		
+
+		// Hover states on the static widgets
+		$( "#dialog-link, #icons li" ).hover(
+			function() {
+				$( this ).addClass( "ui-state-hover" );
+			},
+			function() {
+				$( this ).removeClass( "ui-state-hover" );
+			}
+		);
+	});
+	</script>
+	<style>
+	body{
+		font: 62.5% "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	</style>
 </head>
 <body>
-  <a href="http://openshift.com" class="brand">
-    <img class="brand-image"
-      alt="OpenShift logo"
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAAAXNSR0IArs4c6QAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAARHgAAER4B27UUrQAABUhJREFUWMPFWFlsVGUU/s5/70zbaSltA7RQpJ2lC9CFkQkWIgSJxkAhRA0JCYFq4hPG6JsoGKNCtPigxqhvGlPAuGIaE4igNaElbIW2yNL2tkOtTYGWCqWF2e79fCh7p1Bmpnge/3vuOef7z/nPJiTxMHS6pMRuu6YqFNTTAJYSyAU4GZB0AH2AGCANAfc5Qrba6T3HrmECScYLwCioSIcV2AjidQDZ45Q/LJRaWrLV03X89P8GwHB5XwG4DcDkGPWEBKimNrzN094efGQAzjm9GWHFr4R4LiHKgFaSL3r8zYcmHEBbkW+KFo7UEyhKsNeHlMgyV8eJo4kQpqId9ub6HCoc+XWcxl8lcBTATwDax8GfZtHa054/f/bNg8ZcnyOhHjBc834E8MJ9/vML8aYZQX1hd1PP3WFXkhMRfYkIlpOoGomc0WRRTnch+XAQWG2KTNJNLbuy68C/cQMwXOWrAKkdgz8A8kMdg9X5fn/gQcI7POXLaMk3AGbe/P8SbF0D1KcGRGXpIJJpIQkWBHhnsf/Ie3GF0DmnMxmQT8bg7RellXr8ze+Ox3gAcBvNf+iUUhH5FODLSvScAerDGpiVxTAyGUYKzICA34nCwbhDyHB7N4L8PAofhVzh9jfvjffR/ZZTnupIsR8G0C9EjW7Tfnii/dBgrPL0u83kmjHy33Z3Z/zG97uKi7xpWA8GHZpE1mcZRne8MvXblfbxqQAWR+Fp+mdW5hZPjAqu5JVlhrTwOgrXi2ABbjjchF4FYGvi0qhprgagjYod4OeldXWRWBUEtdBjEH4mwIJ7vF2V4Dqgot0+NEFdPAqmdZ5tAXA8Slx6LrpKsxMHQJge5ft1v0oe2OOu+PZ39+LCOFqImqiXo8JzAeBkXlnmnoKK9LgACJl2R9gELsHW1saUwKCpnbIoa8UMTokVgGXJmSjHkfNWUlWDy9d6USVdyoiEF8b1iElxQKHuPG1D/bCtVEBhCiykMQQFgCK2mN2sSx+tkdcbhGq7wKSkK9RnmsCG2xVSLsflAR1S6eloWhawtF8yGJGskSJDBdQR8pIjZMXcfFmm1gOg2lRaSRdT1AD1PBPQbCAyxcRMifCpc41HEtILNbh9s8SSvYTUmBp2LDGOdCOB1OD0XbeByWliwY5bugc9nU2T4wqhCx7PNAV9bSGwARp3TzVaP0j09GQUzJubLUgefY3SEHMh63MVr4FIlYL+7C1AlCwAmxM+/plYy6hhgN2xp1HBawAr72krnH3uoicTaXyHx7uIwKZoT0QhUhszAAI7x7ivL0a60/jp77yyTFrWt6N6rxE99c7OkxdiBhC2y/cAorXHpama/aNG8dkOO32b6p3zTzXmeysfPu4LkkKafA3IrGjfCfPtuGfiPlfx+xBsuWtwpa3zIuy2YaoZ5o0eSQc5TVnb53aeeAuk9eBtRvkqUH0MoTsqA7nL429eFzeA3lyfQ08eaiNgCrjTYNozQ1S+WyUfQCosTLqZ+oiDUNwhggPujpZTuCMXGwUV6cJgKYnNIJffR3df2NLLZ5871puQrUR//pzpU7rOnAfJP53eDELrsoPpk4RIGRn5xqIBAAdBOCAoBjBjPJsJUdZSt9HSOGFrld5cn2M4KbwfkIUJzqYhQlYWdJ7YN2FrFQCY3nPsmk61AuSuRNYyUdaiRBk/7tViR37Zcir1JYC8WNshgjWWPfhq0dmzVx/5bhQAWnLKU1Md8gZHOsjxAgmD2GEKq4s6m1sxASQPu16HiBh53goqPg9ac0TEcwNQEOBlQAZEcMgC94dDZt2c7r8GMIH0H43ZRDC51RVCAAAAAElFTkSuQmCC">
-    <div class="brand-text"><strong>Open</strong>Shift</div>
-  </a>
-  <h1>
-    Welcome to OpenShift
-  </h1>
-  <p>
-    Place your application here
-  </p>
-  <p>
-    In order to commit to your new project, go to your projects git repo (created with the rhc app create command).  Make your changes, then run:
-  </p>
-  <pre>
-    git commit -a -m 'Some commit message'
-    git push
-  </pre>
-  <p>
-    Then reload this page.
-  </p>
-  
-  <h2>
-    What's next?
-  </h2>
-  <ul>
-    <li>
-      Why not visit us at <a href="http://www.openshift.com">http://www.openshift.com</a>, or
-    </li>
-    <li>
-      You could get help in the <a href="http://www.openshift.com/forums/openshift">OpenShift forums</a>, or
-    </li>
-    <li>
-      You're welcome to come chat with us in our IRC channel at #openshift on freenode.net
-    </li>
-  </ul>
+
+<h2 class="demoHeaders">Videovuokraamo</h2>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Vuokraus</a></li>
+		<li><a href="#tabs-2">Tuotteet</a></li>
+		<li><a href="#tabs-3">Asiakkaat</a></li>
+        <li><a href="#tabs-4">Työntekijät</a></li>
+        <li><a href="#tabs-5">Yhteystiedot</a></li>
+        <li><a href="#tabs-6">Työvuorot</a></li>
+	</ul>
+    <!-- Vuokraus -->
+	<div id="tabs-1">
+<table border="1" width="684" height="200">
+<tr>
+<td>tämänhetkiset vuokraukset näkyy tässä</td>
+</table>
+<br>
+<fieldset>
+<legend><strong>Lisää vuokraus</strong></legend>
+Tuotetunnus:<input type="text" id="tuotetunnus" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> Asiakastunnus:<input type="text" id="asiakstunnus" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> Päivämäärä: <input type="text" id="datepicker" />
+<br>
+<button id="lisaavuokraus">Lisää</button>
+<p>
+</fieldset>
+<fieldset>
+<legend><strong>Poista vuokraus</strong></legend>
+Tilaustunnus:<input type="text" id="tilaustunnus" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> <br>
+<button id="poistavuokraus">Poista</button>  
+</fieldset>
+</div>
+<!-- Tuotteet -->
+	<div id="tabs-2">
+    <table border="1" width="684" height="200">
+<tr>
+<td>tämänhetkiset tuotteet näkyy tässä</td>
+</table>
+<br>
+<fieldset>
+<legend><strong>Lisää tuote</strong></legend>
+Tuotenimi:<input type="text" id="tuotenimi" size="20" maxlength="208" onkeypress="return handleKeypress(event)"> Julkaisuvuosi:<input type="text" id="julkaisuvuosi" size="6" maxlength="4" onkeypress="return handleKeypress(event)">
+Lukumäärä:<input type="text" id="lisaalkulukumaara" size="4" maxlength="2" onkeypress="return handleKeypress(event)">
+Kategoria: <select name="effects" id="effectTypes">
+  <option value="toiminta">Toiminta</option>
+  <option value="Seikkailu">Seikkailu</option>
+  <option value="Animaatio">Animaatio</option>
+  <option value="Komedia">Komedia</option>
+  <option value="Dokumentti">Dokumentti</option>
+  <option value="Draama">Draama</option>
+  <option value="Fantasia">Fantasia</option>
+  <option value="Historia">Historia</option>
+  <option value="Kauhu">Kauhu</option>
+  <option value="Scifi">Scifi</option>
+  <option value="Sota">Sota</option>
+</select>
+<br>
+Formaatti:<div id="radioset">
+		<input type="radio" id="radio1" name="radio"><label for="radio1">DVD</label>
+		<input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">BLURAY</label>
+		<input type="radio" id="radio3" name="radio"><label for="radio3">VHS</label>
+	</div>
+<button id="lisaatuote">Lisää</button>
+<p>
+</fieldset>
+<fieldset>
+<legend><strong>Poista tuote</strong></legend>
+Tuotenumero:<input type="text" id="tuotenumero" size="6" maxlength="4" onkeypress="return handleKeypress(event)">Lukumäärä:<input type="text" id="poistalkumaara" size="4" maxlength="2" onkeypress="return handleKeypress(event)"> <br>
+<button id="poistatuote">Poista</button>  
+</fieldset>
+    </div>
+    <!-- Asiakkaat -->
+	<div id="tabs-3"><table border="1" width="684" height="200">
+<tr>
+<td>Asiakastiedot tässä</td>
+</table>
+<br>
+<fieldset>
+<legend><strong>Lisää Asiakas</strong></legend>
+Etunimi:<input type="text" id="asiakasetunimi" size="16" maxlength="24" onkeypress="return handleKeypress(event)"> Sukunimi:<input type="text" id="asiakassukunimi" size="24" maxlength="40" onkeypress="return handleKeypress(event)">
+<br>
+<button id="lisaaasiakas">Lisää</button>
+<p>
+</fieldset>
+<fieldset>
+<legend><strong>Poista Asiakas</strong></legend>
+Asiakasnumero:<input type="text" id="asiakasnumero" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> <br>
+<button id="poistaasiakas">Poista</button>  
+</fieldset></div>
+    <!-- Työntekijät -->
+    <div id="tabs-4"><table border="1" width="684" height="200">
+<tr>
+<td>työntekijätiedot tässä</td>
+</table>
+<br>
+<fieldset>
+<legend><strong>Lisää Työntekijä</strong></legend>
+Työntekijänumero:<input type="text" id="lisaatyontekijanumero" size="6" maxlength="4" onkeypress="return handleKeypress(event)">Etunimi:<input type="text" id="tyontetunimi" size="16" maxlength="24" onkeypress="return handleKeypress(event)"> Sukunimi:<input type="text" id="tyontsukunimi" size="24" maxlength="40" onkeypress="return handleKeypress(event)"><br>Henkilötunnus:<input type="text" id="tyonthedu" size="10" maxlength="11" onkeypress="return handleKeypress(event)">
+Palkka:<input type="text" id="palkka" size="10" maxlength="11" onkeypress="return handleKeypress(event)">
+<br>
+<button id="lisaatyont">Lisää</button><button id="muutatyont">Muuta</button>
+<p>
+</fieldset>
+<fieldset>
+<legend><strong>Poista Työntekijä</strong></legend>
+Työntekijänumero:<input type="text" id="poistatyontekijanumero" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> <br>
+<button id="poistatyont">Poista</button>  
+</fieldset>
+    </div>
+    <!-- Yhteystiedot -->
+    <div id="tabs-5"><table border="1" width="684" height="200">
+<tr>
+<td>yhteystiedot tässä</td>
+</table>
+<br>
+<fieldset>
+<legend><strong>Lisää Yhteystieto</strong></legend>
+Asiakas- tai työntekijänumero:<input type="text" id="lisyhteystietoid" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> Katuosoite: <input type="text" id="katuosoite" size="30" maxlength="50" onkeypress="return handleKeypress(event)">Postinumero: <input type="text" id="postinumero" size="6" maxlength="5" onkeypress="return handleKeypress(event)"><br>
+Postitoimipaikka:<input type="text" id="postitoimipaikka" size="20" maxlength="40" onkeypress="return handleKeypress(event)">Puhelinnumero:<input type="text" id="puhelin" size="14" maxlength="30" onkeypress="return handleKeypress(event)">Sähköposti:<input type="text" id="sahkoposti" size="24" maxlength="50" onkeypress="return handleKeypress(event)">
+<br>
+<button id="lisaayhteys">Lisää</button></button><button id="muutayhteys">Muuta</button>
+<p>
+</fieldset>
+<fieldset>
+<legend><strong>Poista Yhteystieto</strong></legend>
+Asiakas- tai työntekijänumero:<input type="text" id="poisyhteystietoid" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> <br>
+<button id="poistayhteys">Poista</button>  
+</fieldset>
+</div>
+    <!-- Työvuorot -->
+    <div id="tabs-6"><table border="1" width="684" height="200">
+<tr>
+<td>työvuorot tässä</td>
+</table>
+<br>
+<fieldset>
+<legend><strong>Lisää vuokraus</strong></legend>
+Työvuorotunnus:<input type="text" id="tyovuorotunnus" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> Työntekijätunnus<input type="text" id="vuorotyontekijatunnus" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> Tuntimäärä<input type="text" id="tuntimaara" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> Päivämäärä: <input type="text" id="datepicker" />
+<br>
+<button id="lisaavuoro">Lisää</button></button><button id="muutavuoro">Muuta</button>
+<p>
+</fieldset>
+<fieldset>
+<legend><strong>Poista Työvuoro</strong></legend>
+Työvuorotunnus:<input type="text" id="tilaustunnus" size="6" maxlength="4" onkeypress="return handleKeypress(event)"> <br>
+<button id="poistavuokraus">Poista</button>  
+</fieldset>
+    </div>
+</div>
+
 </body>
 </html>
